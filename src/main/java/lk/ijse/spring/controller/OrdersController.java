@@ -21,14 +21,14 @@ public class OrdersController {
 
     @PostMapping
     public ResponseEntity saveOrders(@RequestBody OrdersDTO ordersDTO){
-        boolean b = orderService.saveOrders(ordersDTO);
-        return new ResponseEntity(new StandardResponse("201","success",b), HttpStatus.CREATED);
+        boolean result = orderService.saveOrders(ordersDTO);
+        return new ResponseEntity(new StandardResponse("201","success",result), HttpStatus.CREATED);
     }
 
     @PutMapping
     public ResponseEntity updateOrder(@RequestBody OrdersDTO ordersDTO){
-        boolean b = orderService.updateOrders(ordersDTO);
-        return new ResponseEntity(new StandardResponse("200","success",b),HttpStatus.OK);
+        boolean result = orderService.updateOrders(ordersDTO);
+        return new ResponseEntity(new StandardResponse("200","success",result),HttpStatus.OK);
     }
 
     @GetMapping("/getAllOrders")
@@ -52,8 +52,8 @@ public class OrdersController {
         if (orderId.trim().length()<=0){
             throw new ValidateException("order id can't be empty");
         }
-        boolean b = orderService.deleteOrder(orderId);
-        return new ResponseEntity(new StandardResponse("200","success",b),HttpStatus.OK);
+        boolean result = orderService.deleteOrder(orderId);
+        return new ResponseEntity(new StandardResponse("200","success",result),HttpStatus.OK);
 
     }
 
